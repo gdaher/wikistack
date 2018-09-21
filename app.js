@@ -18,9 +18,7 @@ app.get('/', (req, res, next) => {
     res.send(html());
 })
 
-app.get('/wiki', (req, res, next) => {
-  res.redirect(wikiRouter)
-})
+
 
 
 const PORT = 3000;
