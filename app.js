@@ -15,9 +15,8 @@ app.use('/wiki', userRouter);
 
 
 app.get('/', (req, res, next) => {
-    res.send(html());
+    res.redirect('/wiki');
 })
-
 
 
 
