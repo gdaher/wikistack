@@ -4,21 +4,23 @@ const app = express();
 const bodyParser = require('body-parser');
 const html = require('./views/main');
 const { db,Page,User } = require('./models');//destructuring assignment.
+const wikiRouter = require('./router/wikiRouter');
+const userRouter = require('./router/userRouter');
 
 app.use(morgan('dev'));
-app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/wiki', wikiRouter);
+app.use('/wiki', userRouter);
 
 
 app.get('/', (req, res, next) => {
     res.send(html());
 })
 
-// db.authenticate().
-// then(() => {
-//   console.log('connected to the database');
-// });
-
+app.get('/wiki', (req, res, next) => {
+  res.redirect(wikiRouter)
+})
 
 
 const PORT = 3000;
